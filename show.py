@@ -7,7 +7,7 @@ from my_dataset import MyDataset
 from setting import *
 
 
-def show_example(_model, _dataloader):
+def show_example(model, _dataloader):
     figure = plt.figure(dpi=600)
     cols, rows = 15, 7
     cnt = 1
@@ -30,7 +30,7 @@ def show_example(_model, _dataloader):
     plt.show()
 
 
-def show_error(_model, _dataloader):
+def show_error(model, _dataloader):
     figure = plt.figure(dpi=600)
     cols, rows = 6, 4
     cnt = 1
@@ -55,7 +55,7 @@ def show_error(_model, _dataloader):
     plt.show()
 
 
-def draw_scatter_plot(_model, _dataloader):
+def draw_scatter_plot(model, _dataloader):
     figure = plt.figure(dpi=600)
     with torch.no_grad():
         for images, labels in _dataloader:
@@ -68,19 +68,19 @@ def draw_scatter_plot(_model, _dataloader):
     plt.show()
 
 
-def draw_hist(_model, _dataloader):
+def draw_hist(model, _dataloader):
     figure = plt.figure(dpi=600)
     with torch.no_grad():
         for images, labels in _dataloader:
             predict_labels = model(images.to('cuda')).cpu()
-            plt.hist(predict_labels.squeeze().numpy(), bins=100, density=True, color='b')
+            plt.hist(predict_labels.squeeze().numpy(), bins=80, density=True, color='b')
     plt.savefig('hist.png', dpi=600)
     plt.show()
 
 
 if __name__ == '__main__':
     dataset = MyDataset(img_dir=TESTING_DATASET_PATH)
-    dataloader = DataLoader(dataset, batch_size=250, shuffle=True, num_workers=4, pin_memory=True)
+    dataloader = DataLoader(dataset, batch_size=250, num_workers=4, pin_memory=True)
     model = get_model().eval().to('cuda')
     model.load_state_dict(torch.load('model/resnet34_0.990000_08-15_18-41.pkl'))
     show_example(model, dataloader)
