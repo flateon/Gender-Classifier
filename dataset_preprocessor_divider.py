@@ -8,7 +8,10 @@ from setting import *
 
 
 def main():
-    files = list(DATASET_PATH.glob("*.jpg"))
+    TRAINING_DATASET_PATH.mkdir(parents=True, exist_ok=True)
+    VALIDATION_DATASET_PATH.mkdir(parents=True, exist_ok=True)
+    TESTING_DATASET_PATH.mkdir(parents=True, exist_ok=True)
+    files = list(RAW_DATASET_PATH.glob(f"*.{RAW_IMAGE_SUFFIX}"))
     training_dataset_size, validation_dataset_size, testing_dataset_size = floor(len(files) * DATASET_RATIO)
     random.shuffle(files)
     for idx, file in tqdm(enumerate(files, start=1), total=len(files)):

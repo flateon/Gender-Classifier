@@ -4,8 +4,9 @@ from numpy import array
 IMAGE_HEIGHT = 153
 IMAGE_WIDTH = 218
 IMAGE_SUFFIX = 'png'
+RAW_IMAGE_SUFFIX = 'jpg'
 # 数据集位置
-DATASET_PATH = Path('dataset/all')
+RAW_DATASET_PATH = Path('dataset/raw')
 TRAINING_DATASET_PATH = Path('dataset/train')
 VALIDATION_DATASET_PATH = Path('dataset/validation')
 TESTING_DATASET_PATH = Path('dataset/test')
