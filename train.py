@@ -53,16 +53,17 @@ def train_(num_epochs, learning_rate, batch_size, lr_decay_rate, decay_steps):
             if i % 10 == 0:
                 tqdm.write(f'Epoch:{epoch}: [{i * batch_size:^8}/{len(dataset):^8}] ,loss:{loss.item():.6f}')
         scheduler.step()
-        # 验证模型在验证集上的准确度
+        # 验证模型在验证集上的精度
         current_acc = test_model(cnn, validation_dataloader)
         writer.add_scalar('validation acc', current_acc, epoch)
-        # 保存准确度提升的模型
+        # 保存精度提升的模型
         if current_acc > max(accuracy):
             torch.save(cnn.state_dict(), f"model.pkl")
             print("save model")
             if current_acc > 0.99:
-                torch.save(cnn.state_dict(),
-                           f'models/resnet34_{current_acc:.6f}_{datetime.now().strftime("%m-%d_%H-%M")}.pkl')
+                cnn.eval()
+                torch.save(cnn,
+                           f'models/resnet34_{current_acc:.6f}_{datetime.now().strftime("%m-%d_%H-%M")}.pth')
         accuracy.append(current_acc)
     writer.close()
     del cnn
