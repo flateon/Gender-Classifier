@@ -14,7 +14,7 @@ from model import get_model
 
 # 超参数
 NUM_EPOCHS = 12
-BATCH_SIZE = 80
+BATCH_SIZE = 90
 LEARNING_RATE = 3e-4
 DECAY_STEP = 3
 LR_DECAY_RATE = 0.3333
