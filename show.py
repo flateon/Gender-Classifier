@@ -2,8 +2,6 @@ import torch
 from matplotlib import pyplot as plt
 from torch import nn
 from torch.utils.data import DataLoader
-
-from model import get_model
 from torch.utils.tensorboard import SummaryWriter
 
 from my_dataset import MyDataset
@@ -105,9 +103,8 @@ def show_model(model_, dataset_, writer_):
 if __name__ == '__main__':
     writer = SummaryWriter('./runs/test')
     dataset = MyDataset(img_dir=TESTING_DATASET_PATH)
-    dataloader = DataLoader(dataset, batch_size=250, num_workers=4, pin_memory=True)
-    model = get_model().eval().to('cuda')
-    model.load_state_dict(torch.load('model/resnet34_0.994131_08-29_20-25.pkl'))
+    dataloader = DataLoader(dataset, batch_size=300, num_workers=4, pin_memory=True)
+    model = torch.load('models/resnet34_0.994131_08-29_20_41.pth')
     show_model(model, dataset, writer)
     show_example(model, dataloader)
     show_pr_curve(model, dataloader, writer)
