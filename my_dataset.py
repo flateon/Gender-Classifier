@@ -1,14 +1,10 @@
-import os
 from pathlib import Path
 
-import torch
 from PIL import Image
 from torch.utils.data import Dataset
-
-# 定义数据集
 from torchvision.transforms import ToTensor
 
-from setting import IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_SUFFIX
+from setting import IMAGE_SUFFIX
 
 
 class MyDataset(Dataset):

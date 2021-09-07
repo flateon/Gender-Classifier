@@ -1,8 +1,7 @@
 from pathlib import Path
 from numpy import array
 
-IMAGE_HEIGHT = 153
-IMAGE_WIDTH = 218
+IMAGE_SIZE = (157, 224)
 IMAGE_SUFFIX = 'png'
 RAW_IMAGE_SUFFIX = 'jpg'
 # 数据集位置

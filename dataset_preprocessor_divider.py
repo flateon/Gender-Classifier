@@ -15,7 +15,7 @@ def main():
     training_dataset_size, validation_dataset_size, testing_dataset_size = floor(len(files) * DATASET_RATIO)
     random.shuffle(files)
     for idx, file in tqdm(enumerate(files, start=1), total=len(files)):
-        image = Image.open(file).resize((IMAGE_HEIGHT, IMAGE_WIDTH))
+        image = Image.open(file).resize(IMAGE_SIZE)
         if image.mode != 'RGB':
             image = image.convert('RGB')
         if idx < training_dataset_size:

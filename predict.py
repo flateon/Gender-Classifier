@@ -7,10 +7,11 @@ from PIL import Image
 from torch.utils.data import Dataset, DataLoader
 from torchvision.transforms import ToTensor
 from tqdm import tqdm
+from setting import IMAGE_SIZE
 
 
 class MyDataset(Dataset):
-    def __init__(self, img_dir, recursion=True, img_suffix='jpg', size=(153, 218), transform=ToTensor()):
+    def __init__(self, img_dir, recursion=True, img_suffix='jpg', size=IMAGE_SIZE, transform=ToTensor()):
         self.img_dir = Path(img_dir)
         self.size = size
         if recursion:
@@ -59,7 +60,7 @@ def predictor(model, dataloader_, path_, image_num, move_file=True):
         tqdm.write(f'成功分类图片{cnt}张,耗时{time() - start:.2f}秒')
 
 
-def main(model_path='model.pth', batch_size=20, num_workers=0, size=(153, 218)):
+def main(model_path='model.pth', batch_size=20, num_workers=0, size=IMAGE_SIZE):
     while True:
         cnn = torch.load(model_path)
         print('基于深度神经网络的照片性别分类器'.center(60, '-'))

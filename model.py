@@ -1,6 +1,5 @@
-from torchvision import models
 from torch import nn
-from setting import *
+from torchvision import models
 
 
 def get_model():
