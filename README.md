@@ -1,5 +1,6 @@
 # GenderClassifier
-一个基于Pytorch的人脸性别分类器
+一个基于Resnet的PyTorch人脸性别分类器
+<img src="./examples.jpg">
 ## 使用前准备
 1. 安装python3.7及以上版本
 2. 安装requirements.txt中的依赖库
@@ -28,6 +29,7 @@ tensorboard --logdir ./runs
 ## 查看训练效果
 10. 运行show.py   
     通过TensorBoard查看样例，错误标记数据，pr曲线，模型结构
-    
+## 数据集
+我们的模型使用13600张有标注的标准证件照训练,由于版权因素我们无法提供数据集
 ## 预训练模型
 预训练模型链接：https://drive.google.com/file/d/1jIYn6kX3rg6rNWOxksiA7VQCyeKu2M9B/view?usp=sharing
